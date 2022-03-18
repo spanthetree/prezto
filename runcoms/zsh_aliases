@@ -2,7 +2,7 @@
 alias e="exit"
 
 # git aliases
-alias ga="git add ."
+alias ga="git add -A ."
 alias gc="git commit"
 alias gp="git push"
 alias gpu="git pull"
@@ -11,6 +11,7 @@ alias gfup="git fetch upstream"
 alias gm="git merge"
 
 # Docker aliases
+alias docker="podman"
 alias dk="docker"
 alias dke="docker exec"
 alias dkr="docker run"
