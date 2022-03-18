@@ -1,5 +1,6 @@
 # general aliases
 alias e="exit"
+alias python=python3
 
 # git aliases
 alias ga="git add -A ."

@@ -24,11 +24,12 @@ function add_alias() {
 }
 
 # virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=`which python`
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
 export WORKON_HOME=$HOME/Software/.virtualenvs
 export PROJECT_HOME=$HOME/Software/git
 export EDITOR=vim
-source /usr/local/bin/virtualenvwrapper.sh
+source /home/dave/.local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -42,8 +43,9 @@ eval "$(pyenv virtualenv-init -)"
 
 # Customize to your needs...
 setopt noclobber
-export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin:/home/dave/.local/bin"
 autoload -U +X bashcompinit && bashcompinit complete -o nospace -C /usr/bin/terraform terraform
+source <(kubectl completion zsh)
 
 [[ -s "/home/dave/.gvm/scripts/gvm" ]] && source "/home/dave/.gvm/scripts/gvm"
 
