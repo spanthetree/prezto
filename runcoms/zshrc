@@ -35,22 +35,26 @@ source /home/dave/.local/bin/virtualenvwrapper.sh
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 # if command -v pyenv 1>/dev/null 2>&1; then
 #   eval "$(pyenv init -)"
 # fi
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # Customize to your needs...
 setopt noclobber
 export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin:/home/dave/.local/bin"
 autoload -U +X bashcompinit && bashcompinit complete -o nospace -C /usr/bin/terraform terraform
+autoload -U compinit; compinit
 source <(kubectl completion zsh)
 
-[[ -s "/home/dave/.gvm/scripts/gvm" ]] && source "/home/dave/.gvm/scripts/gvm"
+# [[ -s "/home/dave/.gvm/scripts/gvm" ]] && source "/home/dave/.gvm/scripts/gvm"
 
 # setup golang version
-gvm use "go1.16.4"
+# gvm use "go1.16.4"
 
-# BBVPN proxy address
-export PROXY=http://proxy.bloomberg.com:81
