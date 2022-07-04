@@ -13,8 +13,8 @@ alias gfup="git fetch upstream"
 alias gm="git merge"
 
 # Docker aliases
-alias docker="podman"
-alias docker-compose="podman-compose"
+# alias docker="podman"
+# alias docker-compose="podman-compose"
 alias dk="docker"
 alias dke="docker exec"
 alias dkr="docker run"
