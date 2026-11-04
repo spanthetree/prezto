@@ -1,6 +1,7 @@
 # general aliases
 alias e="exit"
 alias python=python3
+alias oc="opencode"
 
 # git aliases
 alias ga="git add -A ."
@@ -11,6 +12,9 @@ alias gpu="git pull"
 alias gf="git fetch"
 alias gfup="git fetch upstream"
 alias gm="git merge"
+alias gwa="git worktree add"
+alias gwl="git worktree list"
+alias gwr="git worktree remove"
 
 # Docker aliases
 # alias docker="podman"
@@ -27,14 +31,12 @@ alias dkc="docker-compose"
 
 # Modern tool aliases
 alias bat="batcat -p --paging never"
+alias cat="bat"
 alias ls="exa"
+alias fd="fdfind --maxdepth 100"
+alias clip="xclip -sel c <"
 
 # Python aliases
 alias ptpy="ptpython"
 alias bpy="bpython"
-
-# Meraki
-alias dev="ssh -A woodruff@dev158.meraki.com"
-alias sdg="ssh -A woodruff@sdg0.meraki.com"
-alias syd="ssh -A woodruff@syd0.meraki.com"
-alias dal="ssh -A woodruff@dal0.meraki.com"
+alias wo="workon"

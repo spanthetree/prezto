@@ -23,38 +23,56 @@ function add_alias() {
     fi
 }
 
+# Customize to your needs...
+setopt noclobber
+export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/lib/python3/dist-packages"
+autoload -U +X bashcompinit && bashcompinit complete -o nospace -C /usr/bin/terraform terraform
+fpath=(~/.zsh/completions $fpath)
+autoload -Uz compinit && compinit
+# autoload -U compinit; compinit
+source <(kubectl completion zsh)
+export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
+
 # virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
-export WORKON_HOME=$HOME/Software/.virtualenvs
-export PROJECT_HOME=$HOME/Software/git
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python3
+export WORKON_HOME=$HOME/src/.virtualenvs
 export EDITOR=vim
-source /home/dave/.local/bin/virtualenvwrapper.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+# source /home/david.woodruff/.pyenv/shims/virtualenvwrapper.sh
+# source /home/dave/.local/bin/virtualenvwrapper.sh
 # source /usr/local/bin/virtualenvwrapper.sh
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-# eval "$(pyenv init -)"
 eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
-# Customize to your needs...
-setopt noclobber
-export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin:/home/dave/.local/bin"
-autoload -U +X bashcompinit && bashcompinit complete -o nospace -C /usr/bin/terraform terraform
-autoload -U compinit; compinit
-source <(kubectl completion zsh)
+# Decrypt and load secrets at shell startup
+if [[ -f "$HOME/.zsh_secrets.gpg" ]]; then
+  gpg --quiet --decrypt "$HOME/.zsh_secrets.gpg" 2>/dev/null | source /dev/stdin
+fi
+
 
 # [[ -s "/home/dave/.gvm/scripts/gvm" ]] && source "/home/dave/.gvm/scripts/gvm"
 
-# setup golang version
-# gvm use "go1.16.4"
 
+# Machine/work-specific config, not tracked in this repo
+[[ -s "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"

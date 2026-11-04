@@ -39,6 +39,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'ssh' \
   'completion' \
+  'autosuggestions' \
   'homebrew' \
   'osx' \
   'ruby' \
@@ -56,9 +57,27 @@ zstyle ':prezto:load' pmodule \
 # Set the query found color.
 # zstyle ':prezto:module:autosuggestions:color' found ''
 
+# zstyle ':prezto:module:autosuggestions:color' found 'fg=8'
+
 #
 # Completions
 #
+#
+# zstyle ':prezto:module:completions:color' found 'fg=8'
+#
+# zstyle ':completion:*' menu select
+#
+# # arrow-key navigable menu
+# zstyle ':completion:*' menu select
+#
+# # show descriptions as a dimmed header above each group
+# zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+#
+# # group subcommands, options, etc. into separate sections
+# zstyle ':completion:*' group-name ''
+#
+# # case-insensitive matching
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Set the entries to ignore in static */etc/hosts* for host completion.
 # zstyle ':prezto:module:completion:*:hosts' etc-host-ignores \

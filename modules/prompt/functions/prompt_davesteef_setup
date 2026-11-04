@@ -37,6 +37,12 @@ function prompt_steeef_precmd {
   if (( $+functions[python-info] )); then
     python-info
   fi
+
+  # Optional extra segment, if prompt_local_segment is defined (e.g. in ~/.zshrc.local).
+  _prompt_local_seg=''
+  if (( $+functions[prompt_local_segment] )); then
+    _prompt_local_seg="$(prompt_local_segment)"
+  fi
 }
 
 function prompt_steeef_setup {
@@ -96,9 +102,11 @@ function prompt_steeef_setup {
   zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
 
   # Define prompts.
-  PROMPT='%(?..%F{red}%B-> [%?]%b%f)%F{blue}[${_prompt_steeef_colors[3]}%n%f@${_prompt_steeef_colors[2]}%m%f%F{blue}]${_prompt_steeef_colors[5]}${_prompt_steeef_pwd}%f ${vcs_info_msg_0_}$python_info[virtualenv]%F{blue}> '
+  # Inject the local segment just before the final '>' (shows only when set).
+  PROMPT='%(?..%F{red}%B-> [%?]%b%f)%F{blue}[${_prompt_steeef_colors[3]}%n%f@${_prompt_steeef_colors[2]}%m%f%F{blue}]${_prompt_steeef_colors[5]}${_prompt_steeef_pwd}%f ${vcs_info_msg_0_}$python_info[virtualenv]${_prompt_local_seg:+ ${_prompt_local_seg}}%F{blue}> '
   RPROMPT=''
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }
 
 prompt_steeef_setup "$@"
+
