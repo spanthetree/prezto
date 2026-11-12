@@ -23,6 +23,7 @@ function add_alias() {
     fi
 }
 
+<<<<<<< Updated upstream
 # Customize to your needs...
 setopt noclobber
 export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/lib/python3/dist-packages"
@@ -36,12 +37,28 @@ export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
 # virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python3
 export WORKON_HOME=$HOME/src/.virtualenvs
+=======
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
+if pyenv commands | grep -q '^virtualenv-init$'; then
+  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/Software/.virtualenvs
+export PROJECT_HOME=$HOME/Software/git
+>>>>>>> Stashed changes
 export EDITOR=vim
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 # source /home/david.woodruff/.pyenv/shims/virtualenvwrapper.sh
 # source /home/dave/.local/bin/virtualenvwrapper.sh
 # source /usr/local/bin/virtualenvwrapper.sh
 
+<<<<<<< Updated upstream
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
@@ -53,12 +70,21 @@ eval "$(pyenv virtualenv-init -)"
 # rbenv
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
+=======
+# Customize to your needs...
+setopt noclobber
+export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin:/home/dave/.local/bin"
+autoload -U +X bashcompinit && bashcompinit complete -o nospace -C /usr/bin/terraform terraform
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+>>>>>>> Stashed changes
 
 # Decrypt and load secrets at shell startup
 if [[ -f "$HOME/.zsh_secrets.gpg" ]]; then
   gpg --quiet --decrypt "$HOME/.zsh_secrets.gpg" 2>/dev/null | source /dev/stdin
 fi
 
+<<<<<<< Updated upstream
 
 # [[ -s "/home/dave/.gvm/scripts/gvm" ]] && source "/home/dave/.gvm/scripts/gvm"
 
@@ -68,11 +94,32 @@ fi
 
 
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
+=======
+# goland setup
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# setup golang version
+# gvm use "go1.16.4"
+
+# BBVPN proxy address
+export PROXY=http://proxy.bloomberg.com:81
+
+# opencode
+export PATH=/home/dave/.opencode/bin:$PATH
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+>>>>>>> Stashed changes
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+<<<<<<< Updated upstream
 
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
+=======
+>>>>>>> Stashed changes

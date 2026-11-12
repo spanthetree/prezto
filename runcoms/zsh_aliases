@@ -29,14 +29,20 @@ alias dkps="docker ps -a"
 alias dki="docker images"
 alias dkc="docker-compose"
 
+# k8s aliases
+alias kc="kubectl"
+
 # Modern tool aliases
 alias bat="batcat -p --paging never"
 alias cat="bat"
 alias ls="exa"
 alias fd="fdfind --maxdepth 100"
 alias clip="xclip -sel c <"
+alias clip"xclip -sel -c <"
 
 # Python aliases
 alias ptpy="ptpython"
 alias bpy="bpython"
 alias wo="workon"
+
+
